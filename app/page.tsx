@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import About from '../about.jsx';
-import CustomCursor from '../cursor.jsx';
-import Footer from '../footer.jsx';
-import Hero from '../hero.jsx';
-import { PageIndicator, TopBar } from '../topbar.jsx';
-import Works from '../works.jsx';
+import About from '../components/about.jsx';
+import CustomCursor from '../components/cursor.jsx';
+import Footer from '../components/footer.jsx';
+import Hero from '../components/hero.jsx';
+import { PageIndicator, TopBar } from '../components/topbar.jsx';
+import Works from '../components/works.jsx';
 
 export default function Page() {
   useEffect(() => {
