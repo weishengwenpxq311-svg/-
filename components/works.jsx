@@ -64,6 +64,8 @@ const WORKS = [
   }
 ];
 
+const PORTFOLIO_URL = 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh';
+
 // Count-up metric component
 function Metric({ value, unit, plus }) {
   const ref = useWRef(null);
@@ -159,6 +161,17 @@ export default function Works() {
 
   return (
     <section className="page" id="page-works" data-screen-label="03 Works">
+      <a
+        className="portfolio-strip"
+        href={PORTFOLIO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-hover
+      >
+        <span>PORTFOLIO</span>
+        <span>飞书云文档 ↗</span>
+      </a>
+
       <div className="works-header">
         <div className="section-label">03 / Selected Works</div>
         <h2 className="scroll-reveal" ref={titleRef}>
