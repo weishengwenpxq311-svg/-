@@ -1,0 +1,8 @@
+node_modules
+.next
+.env.local
+.env
+.vercel
+.next-dev.log
+.next-dev.err.log
+.chrome-test-profile
