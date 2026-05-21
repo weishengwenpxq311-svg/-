@@ -44,7 +44,7 @@ const WORKS = [
       { boldStart: '7 模块 GEO 自动化工作流', body: '（关键词挖掘 → AI 平台基线诊断 → AIGC 内容生产 → 人工审核 → 多平台分发），使用 Dify 搭建核心 AI 流程，n8n 实现跨平台分发，飞书多维表格作为数据中枢。', lead: '设计并落地' },
       { boldStart: 'FACTS Prompt 设计框架', body: '（Frequency 词频 / Authority 权威 / Clarity 清晰 / Triplet 三元组 / Schema 结构化），管理 30+ 核心 Prompt 模板的版本演进。', lead: '提出并迭代' },
       { boldStart: '权威层 + 种草层 + 印证层', body: ' 三层内容矩阵，采用「问-答-证」三段式结构提升 AI 识别效率。', lead: '横向测试 5 款 AI 搜索引擎，反向拆解 AI 引用四大机制（权威性、时效性、结构化程度、多源印证），设计' },
-      { boldStart: 'AI 售后客服系统', body: '选型与落地，完成 SaaS 平台对接 + 自建知识库 + 多渠道接入（京东、天猫、抖店、官网）。', lead: '主导' },
+      { boldStart: 'AI 售后客服系统', body: '，完成自建知识库。', lead: '主导' },
       { boldStart: '"笔记过于感性、缺乏可被 AI 提取的量化信息"', body: '，调整策略（加入量化表述与"问答体"结构）后，一周内引用率从 <10% 提升至 35%。', lead: '通过监控数据发现知乎内容 AI 引用率持续低于 10%，定位原因为' }
     ]
   },
@@ -173,9 +173,9 @@ export default function Works() {
       </a>
 
       <div className="works-header">
-        <div className="section-label">03 / 精选作品</div>
+        <div className="section-label">03 / 过往经历</div>
         <h2 className="scroll-reveal" ref={titleRef}>
-          我做过的<em>作品</em>。
+          我的<em>过往经历</em>。
         </h2>
         <p className="lede">点击任一项展开 / 收起完整内容。Click any role to expand or collapse.</p>
       </div>
