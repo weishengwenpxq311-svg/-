@@ -168,14 +168,14 @@ export default function Works() {
         rel="noopener noreferrer"
         data-hover
       >
-        <span>PORTFOLIO</span>
+        <span>作品集</span>
         <span>飞书云文档 ↗</span>
       </a>
 
       <div className="works-header">
-        <div className="section-label">03 / Selected Works</div>
+        <div className="section-label">03 / 精选作品</div>
         <h2 className="scroll-reveal" ref={titleRef}>
-          Things I've <em>built</em>.
+          我做过的<em>作品</em>。
         </h2>
         <p className="lede">点击任一项展开 / 收起完整内容。Click any role to expand or collapse.</p>
       </div>

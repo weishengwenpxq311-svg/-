@@ -31,8 +31,8 @@ export default function Footer() {
     <section className="footer-block" data-screen-label="04 Footer">
       <div className="footer-grid">
         <div className="edu">
-          <div className="section-label">04 / Education</div>
-          <h3 className="scroll-reveal" ref={eduRef}>Academic Background</h3>
+          <div className="section-label">04 / 教育背景</div>
+          <h3 className="scroll-reveal" ref={eduRef}>教育背景</h3>
           <div className="school">天津传媒学院</div>
           <div className="major">本科 · 播音与主持艺术 · 2021 — 2025</div>
           <p style={{ fontSize: 13, lineHeight: 1.85, color: 'var(--ink-soft)', fontFamily: 'var(--serif-cn)', fontWeight: 300, marginBottom: 24, maxWidth: 480 }}>
@@ -58,8 +58,8 @@ export default function Footer() {
         </div>
 
         <div className="contact">
-          <div className="section-label">05 / Get in touch</div>
-          <h3 className="scroll-reveal" ref={talkRef}>Let's talk.</h3>
+          <div className="section-label">05 / 联系我</div>
+          <h3 className="scroll-reveal" ref={talkRef}>来聊聊吧。</h3>
 
           {rows.map(r => (
             <div

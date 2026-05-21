@@ -101,7 +101,6 @@ const SKILL_CATS = [
     { t: 'Claude', y: 'Daily · since 2024' },
     { t: 'ChatGPT', y: 'Daily · since 2023' },
     { t: 'Gemini', y: 'Weekly · since 2024' },
-    { t: 'Midjourney', y: 'Project-based' },
     { t: '即梦', y: 'Weekly · 2024' },
     { t: '可灵', y: 'Weekly · 2025' },
     { t: 'HeyGen', y: 'Project-based' }
@@ -136,6 +135,19 @@ const SUGGESTIONS = [
 ];
 
 const QI_ENDPOINT = '/api/qi-chat';
+
+function stripThinkingContent(text) {
+  const withoutClosedBlocks = text.replace(/<think\b[^>]*>[\s\S]*?<\/think>/gi, '');
+  const lower = withoutClosedBlocks.toLowerCase();
+  const openIndex = lower.lastIndexOf('<think');
+  const closeIndex = lower.lastIndexOf('</think>');
+
+  if (openIndex !== -1 && openIndex > closeIndex) {
+    return withoutClosedBlocks.slice(0, openIndex).trim();
+  }
+
+  return withoutClosedBlocks.replace(/<\/?think\b[^>]*>/gi, '').trim();
+}
 const FALLBACK_MSG = '我这边暂时有点卡住啦，可以稍后再问我一次。';
 
 function Agent() {
@@ -166,7 +178,8 @@ function Agent() {
       });
       if (!res.ok) throw new Error('bad-status');
       const data = await res.json();
-      const answer = (data && typeof data.answer === 'string' && data.answer.trim()) ? data.answer : FALLBACK_MSG;
+      const rawAnswer = data && typeof data.answer === 'string' ? data.answer : '';
+      const answer = stripThinkingContent(rawAnswer) || FALLBACK_MSG;
       setMessages(m => [...m, { who: 'bot', text: answer }]);
       if (data && typeof data.conversationId === 'string' && data.conversationId) {
         setConversationId(data.conversationId);
@@ -294,7 +307,7 @@ export default function About() {
       body: (
         <p>
           在 GEO 项目中独立建立效果监控体系，
-          <span className="hl">将知乎内容 AI 引用率从不足 10% 提升至 35%</span>，习惯以量化指标推动迭代。2 年直播带货经验，单场峰值 5000+ 在线，亲历用户决策链路，对用户真实痛点有直接感知。
+          <span className="hl">将知乎内容 AI 引用率从不足 10% 提升至 35%</span>，习惯以量化指标推动迭代。2 年直播带货经验，单场峰值 1000+ 在线，亲历用户决策链路，对用户真实痛点有直接感知。
         </p>
       )
     }

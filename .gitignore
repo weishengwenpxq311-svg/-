@@ -4,5 +4,6 @@ node_modules
 .env
 .vercel
 .next-dev.log
+.next-dev.out.log
 .next-dev.err.log
 .chrome-test-profile

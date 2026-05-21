@@ -23,6 +23,19 @@ function safeString(v: unknown): string {
   return typeof v === 'string' ? v : '';
 }
 
+function stripThinkingContent(text: string): string {
+  const withoutClosedBlocks = text.replace(/<think\b[^>]*>[\s\S]*?<\/think>/gi, '');
+  const lower = withoutClosedBlocks.toLowerCase();
+  const openIndex = lower.lastIndexOf('<think');
+  const closeIndex = lower.lastIndexOf('</think>');
+
+  if (openIndex !== -1 && openIndex > closeIndex) {
+    return withoutClosedBlocks.slice(0, openIndex).trim();
+  }
+
+  return withoutClosedBlocks.replace(/<\/?think\b[^>]*>/gi, '').trim();
+}
+
 export async function POST(req: NextRequest) {
   let body: ChatRequestBody = {};
   try {
@@ -79,7 +92,7 @@ export async function POST(req: NextRequest) {
     }
 
     const data = (await difyRes.json()) as DifyResponse;
-    const answer = safeString(data.answer).trim() || FALLBACK_ANSWER;
+    const answer = stripThinkingContent(safeString(data.answer)) || FALLBACK_ANSWER;
     const nextConversationId = safeString(data.conversation_id) || conversationId;
 
     return NextResponse.json({

@@ -59,7 +59,7 @@ export default function CustomCursor() {
 
     document.addEventListener('mousemove', onMove);
 
-    const HOVER_SEL = 'a, button, .strength, .tag, .chip, .achievement, .photo-stage, .dot, .contact-cta, .contact-row, .work-entry, .star, [data-hover]';
+    const HOVER_SEL = 'a, button, .strength, .tag, .chip, .achievement, .lanyard-stage, .dot, .contact-cta, .contact-row, .work-entry, .star, [data-hover]';
     const onOver = (e) => {
       if (e.target.closest(HOVER_SEL)) {
         dot.classList.add('active');
