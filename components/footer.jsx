@@ -12,7 +12,7 @@ export default function Footer() {
     { k: 'Phone',     v: '147 7486 3219', copy: '14774863219' },
     { k: 'Location',  v: 'Shenzhen, China', copy: 'Shenzhen, China' },
     { k: 'Expected',  v: '15-16K · AI PM', copy: '15-16K · AI PM' },
-    { k: 'Portfolio', v: '飞书云文档 ↗',  copy: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh', link: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh' }
+    { k: 'Portfolio', v: '飞书云文档 ↗',  copy: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink', link: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink' }
   ];
 
   const onCopy = (key, value, link) => {

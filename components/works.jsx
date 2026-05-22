@@ -64,7 +64,7 @@ const WORKS = [
   }
 ];
 
-const PORTFOLIO_URL = 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh';
+const PORTFOLIO_URL = 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink';
 
 // Count-up metric component
 function Metric({ value, unit, plus }) {
