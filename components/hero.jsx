@@ -171,6 +171,7 @@ export default function Hero() {
       vx: 10,
       vy: 48,
       t: 0,
+      antiGravityTarget: 0,
     };
 
     const restY = 0;
@@ -205,15 +206,18 @@ export default function Hero() {
     const animate = () => {
       state.t += 1;
 
-      const dx = -state.x;
+      const targetX = state.antiGravityTarget * 48;
+      const dx = targetX - state.x;
       const dy = restY - state.y;
       const settle = state.t < 120 ? 0.058 : 0.048;
       const sway = Math.sin(state.t / 13) * Math.max(0, 1 - state.t / 210) * 1.15;
       const gravity = state.t < 170 ? 0.34 : 0;
+      const antiGravityPush = state.antiGravityTarget * 0.62;
+      const horizontalSpring = state.antiGravityTarget ? 0.046 : 0.034;
 
-      state.vx += dx * 0.034 + sway;
+      state.vx += dx * horizontalSpring + sway + antiGravityPush;
       state.vy += dy * settle + gravity;
-      state.vx *= state.t < 130 ? 0.94 : 0.88;
+      state.vx *= state.t < 130 || state.antiGravityTarget ? 0.94 : 0.88;
       state.vy *= state.t < 110 ? 0.91 : 0.84;
       state.x += state.vx;
       state.y += state.vy;
@@ -223,13 +227,12 @@ export default function Hero() {
 
       const motionSpeed = Math.sqrt(state.vx * state.vx + state.vy * state.vy);
       render();
-      if (state.t > 290 && motionSpeed < 0.05 && Math.abs(state.x) < 0.5 && Math.abs(state.y - restY) < 0.5) {
+      if (!state.antiGravityTarget && state.t > 290 && motionSpeed < 0.05 && Math.abs(state.x) < 0.5 && Math.abs(state.y - restY) < 0.5) {
         state.x = 0;
         state.y = restY;
         state.vx = 0;
         state.vy = 0;
         render();
-        return;
       }
       raf = requestAnimationFrame(animate);
     };
@@ -237,8 +240,32 @@ export default function Hero() {
     updateCords();
     let raf = requestAnimationFrame(animate);
 
+    const updateAntiGravity = (event) => {
+      const rect = badge.getBoundingClientRect();
+      const cursorOnLeft = event.clientX < rect.left + rect.width / 2;
+      const nextTarget = cursorOnLeft ? 1 : -1;
+
+      if (nextTarget !== state.antiGravityTarget) {
+        state.vx += nextTarget * 10;
+        state.vy -= 1.4;
+      }
+
+      state.antiGravityTarget = nextTarget;
+    };
+
+    const clearAntiGravity = () => {
+      state.antiGravityTarget = 0;
+    };
+
+    badge.addEventListener('pointerenter', updateAntiGravity);
+    badge.addEventListener('pointermove', updateAntiGravity);
+    badge.addEventListener('pointerleave', clearAntiGravity);
+
     return () => {
       cancelAnimationFrame(raf);
+      badge.removeEventListener('pointerenter', updateAntiGravity);
+      badge.removeEventListener('pointermove', updateAntiGravity);
+      badge.removeEventListener('pointerleave', clearAntiGravity);
     };
   }, []);
 

@@ -65,6 +65,8 @@ const WORKS = [
 ];
 
 const PORTFOLIO_URL = 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink';
+const CARD_SOUND_SRC = '/assets/dealing-cards.mp3';
+const PORTFOLIO_SOUND_SRC = '/assets/dodge-ball.mp3';
 
 // Count-up metric component
 function Metric({ value, unit, plus }) {
@@ -158,6 +160,30 @@ function WorkEntry({ work, idx, expanded, onToggle }) {
 export default function Works() {
   const titleRef = useScrollReveal();
   const [openIdx, setOpenIdx] = useWState(0);
+  const cardSoundRef = useWRef(null);
+  const portfolioSoundRef = useWRef(null);
+
+  const playCardSound = () => {
+    if (!cardSoundRef.current) {
+      cardSoundRef.current = new Audio(CARD_SOUND_SRC);
+      cardSoundRef.current.preload = 'auto';
+      cardSoundRef.current.volume = 0.42;
+    }
+
+    cardSoundRef.current.currentTime = 0;
+    cardSoundRef.current.play().catch(() => {});
+  };
+
+  const playPortfolioSound = () => {
+    if (!portfolioSoundRef.current) {
+      portfolioSoundRef.current = new Audio(PORTFOLIO_SOUND_SRC);
+      portfolioSoundRef.current.preload = 'auto';
+      portfolioSoundRef.current.volume = 0.46;
+    }
+
+    portfolioSoundRef.current.currentTime = 0;
+    portfolioSoundRef.current.play().catch(() => {});
+  };
 
   return (
     <section className="page" id="page-works" data-screen-label="03 Works">
@@ -166,6 +192,7 @@ export default function Works() {
         href={PORTFOLIO_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={playPortfolioSound}
         data-hover
       >
         <span>作品集</span>
@@ -189,6 +216,7 @@ export default function Works() {
             expanded={openIdx === i}
             onToggle={(e) => {
               e.stopPropagation();
+              playCardSound();
               setOpenIdx(openIdx === i ? -1 : i);
             }}
           />

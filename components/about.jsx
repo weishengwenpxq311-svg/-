@@ -135,6 +135,7 @@ const SUGGESTIONS = [
 ];
 
 const QI_ENDPOINT = '/api/qi-chat';
+const LOCK_SOUND_SRC = '/assets/turning-a-lock.mp3';
 
 function stripThinkingContent(text) {
   const withoutClosedBlocks = text.replace(/<think\b[^>]*>[\s\S]*?<\/think>/gi, '');
@@ -267,8 +268,28 @@ export default function About() {
   const buildingRef = useScrollReveal();
   const introRef    = useScrollReveal();
   const [pinned, setPinned] = useAState(-1);
+  const lockSoundRef = useARef(null);
+  const lastSoundAtRef = useARef(0);
 
-  const togglePin = (i) => setPinned(p => p === i ? -1 : i);
+  const playLockSound = () => {
+    const now = Date.now();
+    if (now - lastSoundAtRef.current < 220) return;
+    lastSoundAtRef.current = now;
+
+    if (!lockSoundRef.current) {
+      lockSoundRef.current = new Audio(LOCK_SOUND_SRC);
+      lockSoundRef.current.preload = 'auto';
+      lockSoundRef.current.volume = 0.42;
+    }
+
+    lockSoundRef.current.currentTime = 0;
+    lockSoundRef.current.play().catch(() => {});
+  };
+
+  const togglePin = (i) => {
+    playLockSound();
+    setPinned(p => p === i ? -1 : i);
+  };
 
   const STRENGTHS = [
     {
@@ -349,6 +370,7 @@ export default function About() {
                   key={i}
                   className={'strength' + (pinned === i ? ' pinned' : '')}
                   onClick={() => togglePin(i)}
+                  onMouseEnter={playLockSound}
                   data-hover
                 >
                   <div className="num">{s.num}</div>
