@@ -9,10 +9,11 @@ export default function Footer() {
   const [copied, setCopied] = useFState('');
 
   const rows = [
-    { k: 'Phone',     v: '147 7486 3219', copy: '14774863219' },
+    { k: 'Phone',     v: '178 2240 3639', copy: '17822403639' },
     { k: 'Location',  v: 'Shenzhen, China', copy: 'Shenzhen, China' },
     { k: 'Expected',  v: '15-16K · AI PM', copy: '15-16K · AI PM' },
-    { k: 'Portfolio', v: '飞书云文档 ↗',  copy: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink', link: 'https://rcnf9dsdscpk.feishu.cn/drive/folder/Fhk9fN2x1lbXlydr1SMcHz1znbh?from=from_copylink' }
+    { k: 'Gaocui AI', v: '高翠AI ↗', copy: 'https://1.gaocui.com/', link: 'https://1.gaocui.com/' },
+    { k: 'Miaopin',   v: '秒聘网 ↗', copy: 'https://www.miaopin.com/', link: 'https://www.miaopin.com/' }
   ];
 
   const onCopy = (key, value, link) => {
@@ -36,7 +37,7 @@ export default function Footer() {
           <div className="school">天津传媒学院</div>
           <div className="major">本科 · 播音与主持艺术 · 2021 — 2025</div>
           <p style={{ fontSize: 13, lineHeight: 1.85, color: 'var(--ink-soft)', fontFamily: 'var(--serif-cn)', fontWeight: 300, marginBottom: 24, maxWidth: 480 }}>
-            播音主持背景带来的差异化优势：极强的<strong style={{ color: 'var(--ink)', fontWeight: 500 }}>结构化表达与跨团队沟通能力</strong>，在用户访谈、PRD 评审、跨部门协同中表现突出。对内容质量与用户心理有天然的敏锐度。
+            播音主持背景带来的差异化优势：极强的<strong style={{ color: 'var(--ink)', fontWeight: 500 }}>结构化表达与跨团队沟通能力</strong>，在用户访谈、PRD 评审、跨部门协同中表现突出。对内容质量与用户心理有天然的敏锐度，是 AI 产品经理进行用户调研与需求评审的独特优势。
           </p>
           <div className="awards">
             <div className="award-row">
@@ -74,7 +75,7 @@ export default function Footer() {
             </div>
           ))}
 
-          <a className="contact-cta" href="tel:14774863219" data-hover>
+          <a className="contact-cta" href="tel:17822403639" data-hover>
             <span>Start a chat</span>
             <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />

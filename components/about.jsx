@@ -96,42 +96,49 @@ export function useScrollReveal() {
 
 // ===== Skill data with years/usage =====
 const SKILL_CATS = [
-  { name: 'AI Tools',    tags: [
-    { t: 'Codex', y: 'Daily · since 2024' },
-    { t: 'Claude', y: 'Daily · since 2024' },
-    { t: 'ChatGPT', y: 'Daily · since 2023' },
-    { t: 'Gemini', y: 'Weekly · since 2024' },
-    { t: '即梦', y: 'Weekly · 2024' },
-    { t: '可灵', y: 'Weekly · 2025' },
-    { t: 'HeyGen', y: 'Project-based' }
-  ]},
-  { name: 'Product',     tags: [
-    { t: 'Figma', y: 'Daily · 2 yrs' },
-    { t: 'Axure', y: '2023 — present' },
-    { t: '飞书多维表格', y: 'Daily · data ops' }
-  ]},
-  { name: 'Workflow',    tags: [
-    { t: 'Dify', y: 'Built 7-module GEO flow' },
-    { t: 'n8n', y: 'Cross-platform sync' },
-    { t: 'Coze', y: 'Agents · 2025' }
+  { name: 'AI Product', tags: [
+    { t: 'LLM 应用设计', y: 'AI product design' },
+    { t: 'Prompt 设计', y: 'Prompt workflow' },
+    { t: 'RAG 知识库', y: 'Knowledge base' },
+    { t: '结构化筛选', y: 'Structured matching' },
+    { t: 'GEO / AI 搜索可见性优化', y: '3% → 32% visibility' }
   ]},
   { name: 'Methodology', tags: [
-    { t: 'Harness 工程', y: '产研标准化' },
-    { t: 'Prompt Engineering', y: 'FACTS framework' },
-    { t: 'RAG 知识库', y: 'Knowledge base' },
-    { t: 'Vibe Coding', y: '独立写 Demo' },
+    { t: 'Harness 工程', y: 'Product engineering' },
+    { t: 'Loop 工程', y: 'Feedback loop' },
+    { t: 'AI Coding', y: 'Demo validation' },
+    { t: 'Vibe Coding', y: 'Spec to demo' },
     { t: 'SDD', y: 'Spec → Design → Demo' },
-    { t: 'GEO / SEO', y: '3% → 32% visibility' }
+    { t: '数据反馈闭环', y: 'Data-driven iteration' }
+  ]},
+  { name: 'Product', tags: [
+    { t: '需求分析', y: 'Requirements' },
+    { t: 'PRD 撰写', y: 'PRD writing' },
+    { t: '用户流程设计', y: 'User flow' },
+    { t: '原型设计', y: 'Prototype' },
+    { t: '埋点设计', y: 'Tracking design' },
+    { t: '指标体系', y: 'Metric system' },
+    { t: '版本验收', y: 'Release acceptance' }
+  ]},
+  { name: 'Tools', tags: [
+    { t: 'ChatGPT', y: 'Daily' },
+    { t: 'Claude', y: 'Daily' },
+    { t: 'Gemini', y: 'Weekly' },
+    { t: 'Codex', y: 'AI coding' },
+    { t: 'Dify', y: 'AI workflow' },
+    { t: 'n8n', y: 'Automation' },
+    { t: 'Coze', y: 'Agents' },
+    { t: '飞书多维表', y: 'Data ops' }
   ]}
 ];
 
 // ===== AI Agent (calls our own /api/qi-chat → Dify) =====
 const SUGGESTIONS = [
-  { label: '💼 项目经历', q: '你做过哪些 AI 产品项目？挑一个最有代表性的讲讲' },
-  { label: '✨ 技能优势', q: '你最擅长哪些 AI 工具和方法论？有什么独特优势？' },
-  { label: '🎯 岗位匹配', q: '你和 AI 产品经理岗位是怎么匹配的？请结合你的经验说说' },
-  { label: '🛠 产品方法', q: '介绍一下你的 Vibe Coding + SDD 产研流程是怎么落地的？' },
-  { label: '📬 联系方式', q: '怎么联系修琪？方便加个微信或电话吗？' }
+  { label: '💼 秒聘网项目', q: '请介绍修琪在秒聘网 AI 招聘匹配平台中负责的工作和结果' },
+  { label: '💎 高翠AI项目', q: '请介绍修琪在高翠AI翡翠导购平台中的产品设计经验' },
+  { label: '📈 GEO增长经验', q: '修琪做过哪些 GEO / AI 搜索可见性优化项目？结果怎么样？' },
+  { label: '✨ AI工具链能力', q: '修琪熟悉哪些 AI 工具链和产品验证方法？' },
+  { label: '📬 联系方式', q: '怎么联系修琪？方便电话沟通吗？' }
 ];
 
 const QI_ENDPOINT = '/api/qi-chat';
@@ -294,41 +301,44 @@ export default function About() {
   const STRENGTHS = [
     {
       num: '01.',
-      title: '完整 AI 产品闭环经验',
+      title: 'AI 产品从 0 到 1 落地经验',
       body: (
         <p>
-          主导噜咔博士 AI 拍学机「家长管控中心」与「AI 创新特效」两大核心模块，独立完成需求拆解、PRD 撰写、Figma 原型、埋点设计与版本推进全流程；
-          <span className="hl">5 个月内推动小程序 MAU 由 16.5K 提升至 38.2K</span>。
+          主导秒聘网、高翠AI 等 AI 产品项目，覆盖需求拆解、PRD、原型、规则设计、埋点、研发协同与版本验收，
+          <span className="hl">具备完整产品闭环经验</span>。
         </p>
       )
     },
     {
       num: '02.',
-      title: '能下场的 AI 工具链实操能力',
+      title: 'AI 工具链与产品验证能力',
       body: (
         <p>
-          独立用 Dify 搭建 GEO 全链路自动化工作流（关键词挖掘→内容生产→多平台分发），
-          <span className="hl">将原本依赖人工的内容运营流程系统化落地</span>；
-          通过 Vibe Coding 独立实现噜咔博士小程序主页面交互 Demo，直接参与产品验证而非停留在文档层面。
+          熟悉 Dify、n8n、Coze、Vibe Coding + SDD 等工具链，
+          <span className="hl">能够将业务需求快速转化为可交互 MVP</span>，
+          用于产品验证和研发沟通。
         </p>
       )
     },
     {
       num: '03.',
-      title: '精通 Vibe Coding + SDD 标准化产研流程',
+      title: '数据驱动与用户洞察能力',
       body: (
         <p>
-          熟练运用 <strong>Vibe Coding</strong> 自然语言驱动开发范式，依照 <span className="hl">SDD（Spec → Design → Demo）</span> 三步法，可独立完成 AI 产品从需求拆解、规则定义、架构设计到 API 对接、可交互原型落地的全链路；快速验证产品创意，大幅缩短研发周期，适配 AI 产品快速迭代节奏。
+          在 GEO 项目中建立效果监控体系，
+          <span className="hl">将知乎内容 AI 引用率从不足 10% 提升至 35%</span>；
+          具备用户调研、数据分析和产品迭代意识。
         </p>
       )
     },
     {
       num: '04.',
-      title: '数据驱动的产品迭代闭环 + 真实 C 端用户洞察',
+      title: '跨团队沟通与结构化表达能力',
       body: (
         <p>
-          在 GEO 项目中独立建立效果监控体系，
-          <span className="hl">将知乎内容 AI 引用率从不足 10% 提升至 35%</span>，习惯以量化指标推动迭代。2 年直播带货经验，单场峰值 1000+ 在线，亲历用户决策链路，对用户真实痛点有直接感知。
+          播音主持背景带来较强的结构化表达与跨团队沟通能力，
+          <span className="hl">在用户访谈、PRD 评审、跨部门协同中表现突出</span>，
+          对内容质量与用户心理有敏锐度。
         </p>
       )
     }
@@ -358,10 +368,9 @@ export default function About() {
               Building AI that <span className="hl">actually ships</span>.
             </h3>
             <p className="intro scroll-reveal" ref={introRef}>
-              我是修琪，一位 23 岁的<strong>AI 产品经理</strong>，专注于让 AI 产品真正走进用户的生活。
-              从 0 到 1 搭建过品牌 GEO 体系，主导过千万级用户硬件产品的核心模块，
-              既能写 PRD、画原型，也能下场用 Dify、n8n、Vibe Coding 直接做出可用的产品 Demo——
-              让 AI 不止停留在文档里，而是真正解决问题。
+              我是修琪，一位 23 岁的<strong>AI 产品经理</strong>，专注于 LLM 应用、AI 招聘匹配、垂类 AI 导购与 GEO / AI 搜索可见性优化。
+              我可以完成需求拆解、PRD、原型、规则设计、埋点、研发协同、AI Coding Demo 验证与上线复盘，
+              把业务需求快速转化为可验证、可落地的 AI 产品。
             </p>
 
             <div className="strengths">
